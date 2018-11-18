@@ -55,7 +55,10 @@ window.renderStatistics = function (ctx, players, times) {
 
   ctx.translate(0, CLOUD_Y + CLOUD_HEIGHT);
   for (var i = 0; i < players.length; i++) {
-    ctx.fillText(players[i], CLOUD_X + TEXT_GAP * 2 + (BAR_GAP + BAR_WIDTH) * i, 0 - TEXT_GAP);
-    ctx.fillRect(CLOUD_X + TEXT_GAP * 2 + (BAR_GAP + BAR_WIDTH) * i, 0 - TEXT_GAP - GAP, BAR_WIDTH, 0 - ((BAR_HEIGHT * times[i]) / maxTime));
+    var listX = CLOUD_X + TEXT_GAP * 2 + (BAR_GAP + BAR_WIDTH) * i;
+    var barHeight = (BAR_HEIGHT * times[i]) / maxTime;
+    ctx.fillText(players[i], listX, 0 - TEXT_GAP);
+    ctx.fillRect(listX, 0 - TEXT_GAP - GAP, BAR_WIDTH, 0 - barHeight);
+    ctx.fillText(Math.ceil(times[i]), listX, 0 - TEXT_GAP * 2 - barHeight);
   }
 };
