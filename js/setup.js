@@ -24,20 +24,20 @@ var getRandomEyesColor = function () {
 };
 
 var createRandomWizard = function () {
-  var RandomWizard = {
+  var randomWizard = {
     name: getRandomName(),
     coatColor: getRandomCoatColor(),
     eyesColor: getRandomEyesColor()
   };
-  return RandomWizard;
+  return randomWizard;
 };
 
 var createArrayRandomWizards = function (length) {
-  var arrayRandomWizards = [];
-  for (i = 1; i <= length; i++) {
-    arrayRandomWizards.push(createRandomWizard());
+  var randomWizards = [];
+  for (i = 0; i < length; i++) {
+    randomWizards.push(createRandomWizard());
   }
-  return arrayRandomWizards;
+  return randomWizards;
 };
 
 var wizards = createArrayRandomWizards(4);
