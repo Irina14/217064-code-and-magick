@@ -19,6 +19,7 @@ var wizardEyesInputElement = userDialogElement.querySelector('[name="eyes-color"
 var wizardFireballElement = userDialogElement.querySelector('.setup-fireball-wrap');
 var wizardFireballInputElement = wizardFireballElement.querySelector('[name="fireball-color"]');
 var similarListElement = userDialogElement.querySelector('.setup-similar-list');
+var similarWizardsElement = userDialogElement.querySelector('.setup-similar');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
 var openPopup = function () {
@@ -131,5 +132,4 @@ for (var i = 0; i < wizards.length; i++) {
 }
 similarListElement.appendChild(fragment);
 
-var similarWizards = userDialogElement.querySelector('.setup-similar');
-similarWizards.classList.remove('hidden');
+similarWizardsElement.classList.remove('hidden');
