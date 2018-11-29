@@ -62,6 +62,10 @@ userNameInputElement.addEventListener('focus', function () {
   document.removeEventListener('keydown', popupEscPressHandler);
 });
 
+userNameInputElement.addEventListener('blur', function () {
+  document.addEventListener('keydown', popupEscPressHandler);
+});
+
 wizardCoatElement.addEventListener('click', function () {
   var coatColor = getRandomCoatColor();
   wizardCoatElement.style.fill = coatColor;
@@ -80,24 +84,24 @@ wizardFireballElement.addEventListener('click', function () {
   wizardFireballInputElement.value = fireballColor;
 });
 
-var getRandomIndex = function (array) {
-  return Math.floor(Math.random() * array.length);
+var getRandomElement = function (array) {
+  return array[Math.floor(Math.random() * array.length)];
 };
 
 var getRandomFireballColor = function () {
-  return FIREBALL_COLOR[getRandomIndex(FIREBALL_COLOR)];
+  return getRandomElement(FIREBALL_COLOR);
 };
 
 var getRandomName = function () {
-  return WIZARD_NAMES[getRandomIndex(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[getRandomIndex(WIZARD_SURNAMES)];
+  return getRandomElement(WIZARD_NAMES) + ' ' + getRandomElement(WIZARD_SURNAMES);
 };
 
 var getRandomCoatColor = function () {
-  return COAT_COLORS[getRandomIndex(COAT_COLORS)];
+  return getRandomElement(COAT_COLORS);
 };
 
 var getRandomEyesColor = function () {
-  return EYES_COLORS[getRandomIndex(EYES_COLORS)];
+  return getRandomElement(EYES_COLORS);
 };
 
 var createRandomWizard = function () {
