@@ -14,7 +14,7 @@
 
     var dragged = false;
 
-    var userPicMouseMoveHandler = function (moveEvt) {
+    var mouseMoveHandler = function (moveEvt) {
       moveEvt.preventDefault();
       dragged = true;
 
@@ -32,11 +32,11 @@
       userDialogElement.style.left = (userDialogElement.offsetLeft - shift.x) + 'px';
     };
 
-    var userPicMouseUpHandler = function (upEvt) {
+    var mouseUpHandler = function (upEvt) {
       upEvt.preventDefault();
 
-      document.removeEventListener('mousemove', userPicMouseMoveHandler);
-      document.removeEventListener('mouseup', userPicMouseUpHandler);
+      document.removeEventListener('mousemove', mouseMoveHandler);
+      document.removeEventListener('mouseup', mouseUpHandler);
 
       if (dragged) {
         var userPicClickHandler = function (evt) {
@@ -47,7 +47,7 @@
       }
     };
 
-    document.addEventListener('mousemove', userPicMouseMoveHandler);
-    document.addEventListener('mouseup', userPicMouseUpHandler);
+    document.addEventListener('mousemove', mouseMoveHandler);
+    document.addEventListener('mouseup', mouseUpHandler);
   });
 })();
