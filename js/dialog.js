@@ -1,8 +1,7 @@
 'use strict';
-(function () {
 
-  var userDialogElement = document.querySelector('.setup');
-  var userPicElement = userDialogElement.querySelector('.upload');
+(function () {
+  var userPicElement = document.querySelector('.upload');
 
   userPicElement.addEventListener('mousedown', function (downEvt) {
     downEvt.preventDefault();
@@ -14,29 +13,32 @@
 
     var dragged = false;
 
-    var mouseMoveHandler = function (moveEvt) {
+    var documentMouseMoveHandler = function (moveEvt) {
       moveEvt.preventDefault();
-      dragged = true;
 
       var shift = {
         x: startCoords.x - moveEvt.clientX,
         y: startCoords.y - moveEvt.clientY
       };
 
+      if (shift.x !== 0 && shift.y !== 0) {
+        dragged = true;
+      }
+
       startCoords = {
         x: moveEvt.clientX,
         y: moveEvt.clientY
       };
 
-      userDialogElement.style.top = (userDialogElement.offsetTop - shift.y) + 'px';
-      userDialogElement.style.left = (userDialogElement.offsetLeft - shift.x) + 'px';
+      window.setup.userDialogElement.style.top = (window.setup.userDialogElement.offsetTop - shift.y) + 'px';
+      window.setup.userDialogElement.style.left = (window.setup.userDialogElement.offsetLeft - shift.x) + 'px';
     };
 
-    var mouseUpHandler = function (upEvt) {
+    var documentMouseUpHandler = function (upEvt) {
       upEvt.preventDefault();
 
-      document.removeEventListener('mousemove', mouseMoveHandler);
-      document.removeEventListener('mouseup', mouseUpHandler);
+      document.removeEventListener('mousemove', documentMouseMoveHandler);
+      document.removeEventListener('mouseup', documentMouseUpHandler);
 
       if (dragged) {
         var userPicClickHandler = function (evt) {
@@ -47,7 +49,7 @@
       }
     };
 
-    document.addEventListener('mousemove', mouseMoveHandler);
-    document.addEventListener('mouseup', mouseUpHandler);
+    document.addEventListener('mousemove', documentMouseMoveHandler);
+    document.addEventListener('mouseup', documentMouseUpHandler);
   });
 })();
